@@ -33,7 +33,13 @@ export async function DelAllProducts(){
 
 export async function AddProducttocart (productId:string) {
 
+  
+
 const Mytoken =  await  GetUserToken();
+ if (!Mytoken) {
+    console.error("No user token found");
+    return null;
+  }
     
   try {
   const res = await fetch(`https://ecommerce.routemisr.com/api/v1/cart`,{
@@ -51,7 +57,7 @@ const Mytoken =  await  GetUserToken();
     
   } catch (error) {
     console.log("error",error)
-    return null
+    // return null
   }
 }
 

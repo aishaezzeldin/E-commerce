@@ -10,6 +10,9 @@ import { cookies } from "next/headers";
     secret:process.env.NEXTAUTH_SECRET!,
 })
 
+  console.log("Decoded Token:", MyToken);
+
+
 return MyToken?.credentialToken;
 
 

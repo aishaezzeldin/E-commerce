@@ -51,7 +51,7 @@ const Mytoken =  await  GetUserToken();
     }
   })
   const finalres = await res.json();
-  // console.log("finalres",finalres);
+  console.log("finalres",finalres);
   
   return finalres;
     

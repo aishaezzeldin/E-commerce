@@ -45,7 +45,7 @@
 import { cookies } from "next/headers";
 import { decode } from "next-auth/jwt";
 
-export async function AddProductToCartServer(productId: string) {
+export async function AddBtnCart(productId: string) {
   const cookieStore = cookies();
   const cookieToken = (await cookieStore).get("__Secure-next-auth.session-token")?.value;
 

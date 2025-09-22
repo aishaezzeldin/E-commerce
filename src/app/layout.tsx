@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import "flowbite";
 
-import Navbar from "./_Components/Navbar/Navbar";
-import { Toaster } from "@/components/ui/sonner";
-import { SessionProvider } from "next-auth/react";
-import MysessionProvider from "./_Components/MysessionProvider/MysessionProvider";
-import FlowbiteInit from "./_Components/FlowbiteInit/FlowbiteInit";
+// import Navbar from "./_Components/Navbar/Navbar";
+// import { Toaster } from "@/components/ui/sonner";
+// import { SessionProvider } from "next-auth/react";
+// import MysessionProvider from "./_Components/MysessionProvider/MysessionProvider";
+import Providers from "./_Components/Providers/Providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,25 +27,35 @@ export default function RootLayout({children,}: Readonly<{
   children: React.ReactNode;
 }>) 
 {
-  return (
+    return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        suppressHydrationWarning={true} 
       >
-
-        <MysessionProvider >
-      <Navbar/>
-
-        {children}
-      <Toaster/>
-        </MysessionProvider>
-
-                <FlowbiteInit />
-
-
-
-
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
+
+  // return (
+  //   <html lang="en">
+  //     <body
+  //       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+  //     >
+
+  //       <MysessionProvider >
+  //     <Navbar/>
+
+  //       {children}
+  //     <Toaster/>
+  //     </MysessionProvider>
+
+
+
+
+
+  //     </body>
+  //   </html>
+  // );
 }

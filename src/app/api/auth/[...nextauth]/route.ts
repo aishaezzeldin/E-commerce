@@ -27,7 +27,7 @@ const handler = NextAuth({
 
                 });
                 const finalres = await res.json();
-                console.log("finalresofsignin",finalres);
+                // console.log("finalresofsignin",finalres);
                 const decodedObject:{id:string} = jwtDecode(finalres.token);
                 
 
@@ -59,7 +59,7 @@ const handler = NextAuth({
 
     callbacks:{
         jwt({token,user}) {
-        console.log("🔑 [JWT callback] before:", token);
+        // console.log("🔑 [JWT callback] before:", token);
 
             if(user){
                 {}
@@ -69,7 +69,7 @@ const handler = NextAuth({
 
 
             }
-            console.log("🔑 [JWT callback] after:", token);
+            // console.log("🔑 [JWT callback] after:", token);
 
             return token
             // console.log("params",params)
@@ -79,11 +79,11 @@ const handler = NextAuth({
 
         session({session,token}) {
             // console.log("sesionparams",params)
-                console.log("📦 [Session callback] before:", session);
+                // console.log("📦 [Session callback] before:", session);
 
             session.user.id = token.userID as string;
             session.user.email  = token.email as string;
-            console.log("📦 [Session callback] before:", session);
+            // console.log("📦 [Session callback] before:", session);
 
             return session
         },

@@ -2,12 +2,9 @@ import { CartProduct } from "@/app/_Types/cart";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping} from "@fortawesome/free-solid-svg-icons";
-import { Button } from "@/components/ui/button";
 import DelAllBtn from "./DelAllBtnCart";
 import DelBtnCart from "./DelBtnCart";
 import { getUserCart } from "./cart.actions";
-import OrderSidebar from "./OrderSidebar";
-import DrawerExample from "./OrderSidebar";
 import CheckOutBtn from "./CheckOutBtn";
 
 export default async function CartPage() {

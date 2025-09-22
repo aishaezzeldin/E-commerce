@@ -1,5 +1,4 @@
 import { propsType } from '@/app/_Types/propsType';
-import React from 'react'
 import { getAllSubCategories } from '../subcategory.actions';
 
 export default async function SubcategoryPage(props:propsType) {

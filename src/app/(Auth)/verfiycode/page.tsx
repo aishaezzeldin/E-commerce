@@ -1,4 +1,3 @@
-import React from 'react'
 import VerfiypassBtn from './VerfiycodeBtn'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLock, faShoppingCart } from '@fortawesome/free-solid-svg-icons'

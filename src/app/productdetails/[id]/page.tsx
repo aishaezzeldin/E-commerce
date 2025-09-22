@@ -58,7 +58,6 @@ import {  faStar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AddWishlist from '@/app/wishlist/AddWishlist';
 import { getProductDetails } from '../productdetails.actions';
-import { ProductType } from '@/app/_Types/ProductType';
 
 
 export default async function ProductDetails({ params }: propsType) {

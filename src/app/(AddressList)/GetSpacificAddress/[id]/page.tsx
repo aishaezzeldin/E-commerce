@@ -1,4 +1,3 @@
-import React from 'react'
 import { GetSpecificAddress } from '../GetSpec.actions'
 import { propsType } from '@/app/_Types/propsType'
 

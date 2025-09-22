@@ -1,6 +1,4 @@
-import React from 'react'
-// import { getAllCategories } from '../functions';
-// import Image from 'next/image';
+
 import CategoryCard from '../_Components/CategoryCard/CategoryCard';
 
 export default async function categories() {

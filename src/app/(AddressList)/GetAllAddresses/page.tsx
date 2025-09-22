@@ -1,5 +1,3 @@
-import React from "react";
-
 import Link from "next/link";
 import { GetAllAddresses } from "./GetAll.actions";
 import { AddressResponse } from "@/app/_Types/addressType";

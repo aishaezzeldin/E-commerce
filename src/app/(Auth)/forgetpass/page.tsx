@@ -1,7 +1,5 @@
-import { Button } from '@/components/ui/button'
 import { faLock, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React from 'react'
 import ForgetPassBtn from './forgetpassBtn'
 
 export default function forgetPass() {

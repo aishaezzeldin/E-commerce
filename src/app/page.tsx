@@ -7,9 +7,15 @@ import MainSwiper from "./_Components/Swiper/MainSwiper";
   return (
     <>
 
-    <MainSwiper/>
+    <div className="w-10/12 m-auto">
+
+     <MainSwiper/>
 
     <ProductCard/>
+
+    </div>
+
+   
 
     </>
 

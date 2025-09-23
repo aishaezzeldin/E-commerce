@@ -25,11 +25,53 @@ export default function MainSwiper() {
         className="mySwiper"
       >
         <SwiperSlide>
-          <Image width={200} height={200} src='/public/images/slider-image-1.jpeg' alt='sliderimage'  />
+            {/* <div className='relative h-[600px] w-full'>
+          <Image fill sizes='(max-width:768px) 100vw (max-width:1200px) 50vw,25vw' className='object-cover' src='/images/slider-image-1.jpeg' alt='sliderimage'  />
+            </div> */}
+            <div className="relative w-full h-48 sm:h-64 md:h-80 lg:h-[500px]">
+                <Image
+                    src="/public/images/Mainslider1.jpg"
+                    alt="sliderimage"
+                    fill
+                    className="object-cover"
+                    priority
+                />
+                </div>
         </SwiperSlide>
         <SwiperSlide>
-          <Image width={200} height={200} src='/public/images/slider-image-2.jpeg' alt='sliderimage'  />
+            {/* <div className='relative h-[600px] w-full'>
+          <Image fill sizes='(max-width:768px) 100vw (max-width:1200px) 50vw,25vw' className='object-cover' src='/images/slider-image-1.jpeg' alt='sliderimage'  />
+            </div> */}
+            <div className="relative w-full h-48 sm:h-64 md:h-80 lg:h-[500px]">
+                <Image
+                    src="/public/images/Mainslider2.jpeg"
+                    alt="sliderimage"
+                    fill
+                    className="object-cover"
+                    priority
+                />
+                </div>
         </SwiperSlide>
+        <SwiperSlide>
+            {/* <div className='relative h-[600px] w-full'>
+          <Image fill sizes='(max-width:768px) 100vw (max-width:1200px) 50vw,25vw' className='object-cover' src='/images/slider-image-1.jpeg' alt='sliderimage'  />
+            </div> */}
+            <div className="relative w-full h-48 sm:h-64 md:h-80 lg:h-[500px]">
+                <Image
+                    src="/public/images/Mainslider3.jpeg"
+                    alt="sliderimage"
+                    fill
+                    className="object-cover"
+                    priority
+                />
+                </div>
+        </SwiperSlide>
+
+        {/* <SwiperSlide>
+          <div className='relative h-[600px] w-full'>
+          <Image width={200} height={200} className='object-cover' src='/images/slider-image-2.jpeg' alt='sliderimage'  />
+          </div>
+        </SwiperSlide> */}
 
       </Swiper>
     </>

@@ -1,16 +1,31 @@
 "use client"
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import logo from '../../../../images/freshcart-logo.svg'
 import { signOut, useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
+import { getUserCart } from '@/app/cart/cart.actions'
+import { cartcontext } from '@/app/_Context/CartContext'
 
 export default  function Navbar() {
+
+  // const [intialcartCount, setintialcartCount] = useState(0)
+
+  // const{cartCount} = useContext(cartcontext);
+  // useEffect(function(){
+  //   getUserCart().then(res=>{
+  //   // setintialcartCount(res?.numOfCartItems)
+  //     setintialcartCount(res?.numOfCartItems || 0);
+
+  //   });
+  // })
+
+  // console.log("cartCount",cartCount);
 const router = useRouter();
 
  const {status} =  useSession();
- console.log("session",status);
+//  console.log("session",status);
 
  function handlesignout(){
   signOut();
@@ -68,7 +83,7 @@ const router = useRouter();
                 </li>
                 <li>
 
-                <Link href="/cart" className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Cart</Link>
+                <Link href="/cart" className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Cart </Link>
                 </li>
 
      
@@ -86,11 +101,7 @@ const router = useRouter();
             </div>
         </div>
         </nav>
-
-
-
-   
-    
+ 
     </>
   )
 }

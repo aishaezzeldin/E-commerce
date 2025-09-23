@@ -29,6 +29,7 @@
 import AddressForm from "./AddAddressForm";
 import Link from "next/link";
 import { GetAllAddresses } from "../GetAllAddresses/GetAll.actions";
+import { Button } from "@/components/ui/button";
 // import { GetAllAddresses } from "./AddAddress.actions";
 
 export default async function AddressPage() {
@@ -59,6 +60,9 @@ export default async function AddressPage() {
 
       <div className="max-w-sm mx-auto my-7">
         <AddressForm />
+        <Link href={'../cashorder'}>
+        <Button> payment </Button>
+        </Link>
       </div>
     </div>
   );

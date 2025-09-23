@@ -22,6 +22,7 @@ export default function DelBtnCart({id}:{id:string}) {
    {
         toast.success(' removed  ',{position:'top-right',duration:3000})
         router.refresh()
+        
    }
    else{
         toast.error(' Failed   ',{position:'top-right',duration:3000})

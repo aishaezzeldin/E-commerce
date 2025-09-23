@@ -12,7 +12,7 @@ import { cookies } from "next/headers";
 })
 
 
-console.log("Decoded Token:", MyToken);
+// console.log("Decoded Token:", MyToken);
 
 return MyToken?.credentialToken;
 

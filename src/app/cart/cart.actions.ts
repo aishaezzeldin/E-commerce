@@ -1,6 +1,7 @@
 "use server"
 import { GetUserToken } from "@/utils/utils";
-import { CartResponse } from "../_Types/cart";
+import { AddToCartResponse, CartResponse } from "../_Types/cart";
+import { revalidatePath, revalidateTag } from "next/cache";
 
 
 
@@ -31,35 +32,41 @@ export async function DelAllProducts(){
 }
 
 
-export async function AddProducttocart (productId:string) {
 
-  
 
-const Mytoken =  await  GetUserToken();
- if (!Mytoken) {
+export async function AddProducttocart(productId: string) {
+  const Mytoken = await GetUserToken();
+  if (!Mytoken) {
     console.error("No user token found");
     return null;
   }
-    
+
   try {
-  const res = await fetch(`https://ecommerce.routemisr.com/api/v1/cart`,{
-    method:"post",
-    body:JSON.stringify({productId}),
-    headers:{
-        'Content-Type':'application/json',
-        token : Mytoken as string,
-    }
-  })
-  const finalres = await res.json();
-  console.log("finalres",finalres);
-  
-  return finalres;
+    const res = await fetch(`https://ecommerce.routemisr.com/api/v1/cart`, {
+      method: "post",
+      body: JSON.stringify({ productId }),
+      headers: {
+        "Content-Type": "application/json",
+        token: Mytoken as string,
+      },
+    });
+
+    const finalres = await res.json();
+
+    // if (finalres.status === "success") {
+    //   return finalres; // return full cart response
+    // }
+
+    // console.log("finalres", finalres);
     
+    return finalres;
   } catch (error) {
-    console.log("error",error)
-    // return null
+    console.log("error", error);
+    return null;
   }
 }
+
+
 
 
 
@@ -77,6 +84,10 @@ const Mytoken =  await  GetUserToken();
   })
 
   const finalres = await res.json();
+  // if (finalres.status === "success") {
+  //   revalidatePath("/cart");   // 🔄 ensures cache is updated
+  //   // revalidatePath("/");       // 🔄 if navbar is rendered at root
+  // }
   return finalres
     
   } catch (error) {
@@ -92,7 +103,7 @@ const Mytoken =  await  GetUserToken();
 }
 
 
-export async function getUserCart():Promise<CartResponse | null>{
+export async function getUserCart():Promise<AddToCartResponse | null>{
     const Mytoken =  await  GetUserToken();
 
       try {
@@ -101,15 +112,19 @@ export async function getUserCart():Promise<CartResponse | null>{
     headers:{
          token : Mytoken as string,
     },
-    cache:"no-store"
+    
+    
   })
   const finalres = await res.json();
+
+ 
 //  console.log("finalres",finalres);
  if(!finalres.data)
  {
   return null;
  }
- return finalres.data as CartResponse ;
+//  return finalres.data as CartResponse ;
+ return finalres ;
 
   }
   catch (error) {

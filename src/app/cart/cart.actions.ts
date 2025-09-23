@@ -1,7 +1,6 @@
 "use server"
 import { GetUserToken } from "@/utils/utils";
-import { AddToCartResponse, CartResponse } from "../_Types/cart";
-import { revalidatePath, revalidateTag } from "next/cache";
+import { AddToCartResponse} from "../_Types/cart";
 
 
 

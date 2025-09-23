@@ -1,12 +1,11 @@
 "use client"
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useContext, useEffect, useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import logo from '../../../../images/freshcart-logo.svg'
 import { signOut, useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import { getUserCart } from '@/app/cart/cart.actions'
-import { cartcontext } from '@/app/_Context/CartContext'
 
 export default  function Navbar() {
 

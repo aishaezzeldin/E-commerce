@@ -31,8 +31,6 @@ export async function DelAllProducts(){
 }
 
 
-
-
 export async function AddProducttocart(productId: string) {
   const Mytoken = await GetUserToken();
   if (!Mytoken) {
@@ -64,10 +62,6 @@ export async function AddProducttocart(productId: string) {
     return null;
   }
 }
-
-
-
-
 
 
 export async function DelProductFromcart (id:string){

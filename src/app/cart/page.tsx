@@ -5,14 +5,10 @@ import { faCartShopping} from "@fortawesome/free-solid-svg-icons";
 import DelAllBtn from "./DelAllBtnCart";
 import DelBtnCart from "./DelBtnCart";
 import { getUserCart } from "./cart.actions";
-// import CheckOutBtn from "./CheckOutBtn";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Input } from "@/components/ui/input";
 
 export default async function CartPage() {
-
-  // cartItems {status: 'success', numOfCartItems: 4, cartId: '68cfd96cd60729a936706f52', data: {…}}cartId: "68cfd96cd60729a936706f52"data: cartOwner: "68cd247667868197251ce92a"createdAt: "2025-09-21T10:54:36.196Z"products: (4) [{…}, {…}, {…}, {…}]totalCartPrice: 2724updatedAt: "2025-09-22T23:37:17.307Z"__v: 5_id: "68cfd96cd60729a936706f52"[[Prototype]]: ObjectnumOfCartItems: 4status: "success"[[Prototype]]: Object
 
   
   const cartItems = await getUserCart();
@@ -39,10 +35,12 @@ export default async function CartPage() {
   return (
     <>
 
-  <div className="flex flex-col lg:flex-row items-center gap-6 p-4">
+  {/* <div className="flex flex-col lg:flex-row items-center gap-6 h-screen p-4"> */}
+  <div className="flex flex-col lg:flex-row items-start gap-6 min-h-screen p-4">
+
 
     {/* main cart */}
-    <div className="w-full lg:w-2/3 h-auto lg:h-screen p-6 ">
+    <div className="w-full lg:w-2/3 h-auto  p-6 ">
       <h5 className="inline-block py-4 px-2 font-bold text-2xl md:text-3xl lg:text-4xl align-middle">
         Shopping Cart
         <FontAwesomeIcon
@@ -81,14 +79,10 @@ export default async function CartPage() {
 
                 <div className="flex flex-1 items-center">
                   <Button className="cursor-pointer bg-green-500">+</Button>
-                  {/* <Input className="w-8 p-0.5 h-8" value={item.count}/> */}
                   <Button className="cursor-pointer bg-green-500">-</Button>
                 </div>
 
-                {/* <Button className="my-3 cursor-pointer bg-green-300 hover:bg-green-500">
-                  <FontAwesomeIcon icon={faTrash} className="w-5 h-5 mr-2" />
-                  remove
-                </Button> */}
+
                 <DelBtnCart id={item.product.id}/>
 
               </div>
@@ -107,16 +101,10 @@ export default async function CartPage() {
 
       <div className="flex mt-6 justify-between items-center ">
 
-        {/* <div>
-        <Button className="px-4">
-          Clear Cart 
-        </Button>
-      </div> */}
       <DelAllBtn />
 
       <div className="mt-6 text-right font-bold text-lg">
         Total: {totalCartPrice} EGP
-        {/* Total: {cartItems.totalCartPrice} EGP */}
       </div>
 
       </div>

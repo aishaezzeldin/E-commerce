@@ -29,11 +29,13 @@ export default function RootLayout({children,}: Readonly<{
 {
     return (
     <html lang="en">
-      <body
+      <body 
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning={true} 
       >
+        <div className="h-screen">
         <Providers>{children}</Providers>
+        </div>
       </body>
     </html>
   );

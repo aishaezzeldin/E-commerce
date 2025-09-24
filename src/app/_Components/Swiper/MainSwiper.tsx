@@ -14,7 +14,7 @@ import Image from 'next/image';
 export default function MainSwiper() {
   return (
     <>
-      <Swiper
+      <Swiper 
         spaceBetween={30}
         effect={'fade'}
         navigation={true}
@@ -22,49 +22,63 @@ export default function MainSwiper() {
           clickable: true,
         }}
         modules={[EffectFade, Navigation, Pagination]}
-        className="mySwiper"
+        className="mySwiper mb-6"
       >
+    
+
+
         <SwiperSlide>
-            {/* <div className='relative h-[600px] w-full'>
-          <Image fill sizes='(max-width:768px) 100vw (max-width:1200px) 50vw,25vw' className='object-cover' src='/images/slider-image-1.jpeg' alt='sliderimage'  />
-            </div> */}
-            <div className="relative w-full h-48 sm:h-64 md:h-80 lg:h-[500px]">
-                <Image
-                    src="/public/images/Mainslider1.jpg"
-                    alt="sliderimage"
-                    fill
-                    className="object-cover"
-                    priority
-                />
-                </div>
+
+                 <div className="relative w-full h-48 sm:h-64 md:h-80 lg:h-[500px]">
+                    <Image
+                        src="/images/Mainslider2.jpg"
+                        alt="sliderimage"
+                        fill
+                        className="object-fill"
+                        priority
+                        sizes="100vw"   // 👈 always full width of viewport
+                    />
+                    </div>
+
+
         </SwiperSlide>
+
+
         <SwiperSlide>
-            {/* <div className='relative h-[600px] w-full'>
-          <Image fill sizes='(max-width:768px) 100vw (max-width:1200px) 50vw,25vw' className='object-cover' src='/images/slider-image-1.jpeg' alt='sliderimage'  />
-            </div> */}
-            <div className="relative w-full h-48 sm:h-64 md:h-80 lg:h-[500px]">
-                <Image
-                    src="/public/images/Mainslider2.jpeg"
-                    alt="sliderimage"
-                    fill
-                    className="object-cover"
-                    priority
-                />
-                </div>
+        
+                  <div className="relative w-full h-auto sm:h-64 md:h-80 lg:h-[500px]">
+                    <Image
+                        src="/images/Mainslider3.jpg"
+                        alt="sliderimage"
+                        fill
+                        className="object-cover"
+                        priority
+                        sizes="100vw"   // 👈 always full width of viewport
+                    />
+                    </div>
+
+
+
+
+
         </SwiperSlide>
-        <SwiperSlide>
-            {/* <div className='relative h-[600px] w-full'>
-          <Image fill sizes='(max-width:768px) 100vw (max-width:1200px) 50vw,25vw' className='object-cover' src='/images/slider-image-1.jpeg' alt='sliderimage'  />
-            </div> */}
-            <div className="relative w-full h-48 sm:h-64 md:h-80 lg:h-[500px]">
-                <Image
-                    src="/public/images/Mainslider3.jpeg"
-                    alt="sliderimage"
-                    fill
-                    className="object-cover"
-                    priority
-                />
-                </div>
+
+
+
+
+            <SwiperSlide>
+
+                <div className="relative w-full h-48 sm:h-64 md:h-80 lg:h-[500px]">
+                    <Image
+                        src="/images/Mainslider1.jpg"
+                        alt="sliderimage"
+                        fill
+                        className="object-fill"
+                        priority
+                        sizes="100vw"   // 👈 always full width of viewport
+                    />
+                    </div>
+
         </SwiperSlide>
 
         {/* <SwiperSlide>
@@ -77,3 +91,10 @@ export default function MainSwiper() {
     </>
   );
 }
+
+
+
+
+    {/* <div className='relative h-[600px] w-full'>
+          <Image fill sizes='(max-width:768px) 100vw (max-width:1200px) 50vw,25vw' className='object-cover' src='/images/Mainslider3.jpeg' alt='sliderimage'  />
+            </div> */}

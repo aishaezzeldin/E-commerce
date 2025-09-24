@@ -32,7 +32,7 @@ export default function DelBtnWishlist({id}:{id:string}) {
     
     return (
     <>
-        <Button onClick={handledelbtn} className="my-3 cursor-pointer bg-green-300 hover:bg-green-500">
+        <Button onClick={handledelbtn} className="my-3 cursor-pointer bg-green-500 hover:bg-green-400">
                 <FontAwesomeIcon icon={faTrash} className="w-5 h-5 mr-2" />
                 remove
         </Button>

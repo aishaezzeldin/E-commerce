@@ -1,56 +1,3 @@
-// import AddBtnCart from '@/app/cart/AddBtnCart';
-// import PriceHandler from '@/app/_Components/PriceHandler/PriceHandler';
-// import { propsType } from '@/app/_Types/propsType';
-// import {  faStar } from '@fortawesome/free-solid-svg-icons';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import AddWishlist from '@/app/wishlist/AddWishlist';
-// import { getProductDetails } from '../productdetails.actions';
-// export default async function ProductDetails({params}:propsType) {
-
-//   console.log("params",params)
-
-//     const details = await getProductDetails(params.id);
-    
-//   return (
-//   <>
-
-//   <div className=' flex justify-center items-center'>
-
-
-//   <div>
-//     <img className='w-2/3'  src={details?.imageCover} alt={details?.title} />
-//   </div>
-
-//   <div className='py-3' >
-
-
-//     <div className='flex justify-between'>
-//     <h5 className='text-3xl '>{details?.title}</h5>
-
-//        <span className="flex  items-center gap-1 pe-3 ">
-//           <FontAwesomeIcon icon={faStar} className="text-yellow-500 w-4 h-4" />
-//           {details?.ratingsAverage}
-//         </span>
-
-//     </div>
-
-//     <h3 className='text-2xl'>{details?.description}</h3>
-//     <PriceHandler price={details?.price} priceAfterDiscount={details?.priceAfterDiscount} />
-
-//     <div className='flex justify-between '>
-//     <AddBtnCart id={details?.id} />
-
-//     <AddWishlist id={details?.id}/>
-
-//     </div>
-//   </div>
-
-//     </div>
-      
-
-//   </>
-//   )
-// }
 import AddBtnCart from '@/app/cart/AddBtnCart';
 import PriceHandler from '@/app/_Components/PriceHandler/PriceHandler';
 import { propsType } from '@/app/_Types/propsType';
@@ -107,33 +54,8 @@ export default async function ProductDetails({ params }: propsType) {
     </div>
   </>
 )}
-
-
-        {/* {details?.price !== undefined && (
-      <PriceHandler 
-        price={details.price} 
-        priceAfterDiscount={details.priceAfterDiscount} 
-      />
-    )}
-
-    <div className='flex justify-between '>
-      {details?.id !== undefined && (
-        <>
-          <AddBtnCart id={details?.id} />
-
-          <AddWishlist id={details?.id}/>
-        </>
-
-    )} */}
-    {/* <AddBtnCart id={details?.id} />
-
-    <AddWishlist id={details?.id}/> */}
-
     </div>
   </div>
-
-    {/* </div> */}
-      
 
   </>
   )

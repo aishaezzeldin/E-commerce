@@ -14,14 +14,11 @@ export default function DelAllBtnCart() {
         const res = await DelAllProducts();
         console.log('res',res);
 
-
-        // if(res && res.message ==='success')
         if (res && (res.status === "success" || res.message === "success")) 
 
         {
             toast.success('All Product Removed' ,{position:'top-right',duration:3000});
             router.refresh();
-            // router.push('/');
         }
          else{
                 toast.error(' Failed To Remove , Try Again Later  ',{position:'top-right',duration:3000})

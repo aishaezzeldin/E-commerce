@@ -20,7 +20,6 @@ export default  function LoginForm() {
 
       const { data: session, status } = useSession();
 
-  console.log("⚡ Session from client:", session, "Status:", status);
 
 
 
@@ -35,8 +34,10 @@ export default  function LoginForm() {
     
     
     async function SubmitFun(data:signinType){
-        // const result = await Loginaction(data);
        const res = await signIn('credentials',{...data,redirect:false})
+
+
+
 
   if (res?.ok) {
     toast.success('Welcome Back',{position:'top-right',duration:3000})

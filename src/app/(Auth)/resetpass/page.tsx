@@ -1,7 +1,6 @@
 import { faLock, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ResetBtn from './resetPassBtn'
-// import { useRouter } from 'next/navigation';
 
 export default function resetpass() {
     
@@ -14,7 +13,6 @@ export default function resetpass() {
      <FontAwesomeIcon icon={faLock} className="text-white w-8 h-8" />
    </div>
 
-   {/* <h4 className='my-6 w-full sm:w-3/4 font-bold sm:text-base text-4xl'>Security code to reset password</h4> */}
  
    {/* Paragraph */}
    <p className="my-6 w-full sm:w-3/4  sm:text-base text-3xl">

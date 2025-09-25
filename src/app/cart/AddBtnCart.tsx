@@ -37,16 +37,6 @@ export default  function AddBtnCart({id}:{id:string}) {
            duration: 3000,
          });
        }
-
-  //  if(res && res.status==="success")
-  //  {
-  //       toast.success(' Added To Your Cart  ',{position:'top-right',duration:3000})
-
-  //  }
-  //  else{
-  //       toast.error(' Failed To Add To Cart  ',{position:'top-right',duration:3000})
-  //  }
-    
   }
 
   return (
@@ -60,16 +50,6 @@ export default  function AddBtnCart({id}:{id:string}) {
    </div>
   )
 }
-
-
-
-
-
-
-{/* <Button onClick={handleaddproduct}  className=" w-60 cursor-pointer text-center  bg-green-500 hover:bg-green-700">
- <FontAwesomeIcon icon={faPlus}/>
-  Add To Cart
-  </Button> */}
 
 
 

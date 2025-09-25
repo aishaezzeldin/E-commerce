@@ -48,16 +48,6 @@ async function handlewishlist() {
            isWishlisted ? "text-green-700" : "text-green-500"
          }`} />
         </span>
-
-
-//  <span className="pe-3">
-//       <FontAwesomeIcon
-//         onClick={handlewishlist}
-//         icon={faHeart}
-//         className={`w-7 h-7 text-3xl cursor-pointer transition-colors duration-300 ${
-//           isWishlisted ? "text-red-600" : "text-gray-400"
-//         }`}
-//       />
   )
 
 

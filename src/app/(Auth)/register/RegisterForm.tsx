@@ -32,7 +32,6 @@ export default function RegisterForm() {
     
       async function SubmitFun(data:signupType){
     const res = await Registeraction(data);
-    console.log("register res" ,res)
 
 
         if(res && res.message==="success")

@@ -15,7 +15,6 @@ export async function forgetpasswordApi(email:string){
 
         })
         const finalres = await res.json();
-        console.log('finalres',finalres)
 
         return finalres;
         

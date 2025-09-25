@@ -5,7 +5,6 @@ export async function getAllBrands():Promise<brandType[]|null>
   try {
       const res = await fetch('https://ecommerce.routemisr.com/api/v1/brands',{cache:'force-cache'})
   const finalres = await res.json();
-  console.log("finalres",finalres)
 
   return finalres.data
     

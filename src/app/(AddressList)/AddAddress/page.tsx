@@ -45,7 +45,6 @@ export default async function AddressPage() {
       {firstAddressId ? (
         <h2 className="text-center text-xl pt-4">
           <Link
-            // href={`../GetSpacificAddress/${firstAddressId}`}
             href={`../GetAllAddresses`}
             className="text-red-600"
           >
@@ -60,9 +59,7 @@ export default async function AddressPage() {
 
       <div className="max-w-sm mx-auto my-7">
         <AddressForm />
-        <Link href={'../cashorder'}>
-        <Button> payment </Button>
-        </Link>
+
       </div>
     </div>
   );

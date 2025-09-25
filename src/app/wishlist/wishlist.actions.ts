@@ -9,18 +9,18 @@ export async function DelFromWishlist(id:string)
 
 {
 
-const Mytoken =  await  GetUserToken();
+const {credentialToken} =  await  GetUserToken();
+
 
     try {
         const res = await fetch(`https://ecommerce.routemisr.com/api/v1/wishlist/${id}`,{
             method:'Delete',
             headers:{
-                token:Mytoken as string,
+                token:credentialToken as string,
             }
         })
 
         const finalreswish = await res.json();
-        console.log("finalreswish",finalreswish)
          return finalreswish
     } 
     
@@ -33,7 +33,8 @@ const Mytoken =  await  GetUserToken();
 
 export async function AddToWishlist(productId:string){
 
-const Mytoken =  await  GetUserToken();
+const {credentialToken} =  await  GetUserToken();
+
 
 
   try {
@@ -42,12 +43,11 @@ const Mytoken =  await  GetUserToken();
       body:JSON.stringify({productId}),
       headers:{
         'Content-Type':'application/json',
-        token:Mytoken as string,
+        token:credentialToken as string,
       }
     })
 
     const finalres = await res.json();
-    // console.log("finalres",finalres)
 
     return finalres
     
@@ -59,18 +59,18 @@ const Mytoken =  await  GetUserToken();
 }
 
 export async function getUserWishlist():Promise<wishlistType | null>{
-    const Mytoken =  await  GetUserToken();
+    const {credentialToken} =  await  GetUserToken();
+
 
       try {
   const res = await fetch(`https://ecommerce.routemisr.com/api/v1/wishlist`,{
 
     headers:{
-         token : Mytoken as string,
+         token : credentialToken as string,
     },
     cache:"no-store"
   })
   const finalres = await res.json();
-//  console.log("finalres",finalres);
  if(!finalres.data)
  {
   return null;

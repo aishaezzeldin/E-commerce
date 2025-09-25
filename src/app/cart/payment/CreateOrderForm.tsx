@@ -7,14 +7,20 @@ import { Button } from '@/components/ui/button';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
-import { shipingschema } from './cashorder.schema';
+import { shipingschema } from './payment.schema';
 import { cashorderType } from '@/app/_Types/cashorderType';
-import { createCashOrder } from './cashorder.actions';
+import { createCashOrder, createOnlineOrder } from './payment.actions';
 import { getUserCart } from '../cart.actions';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Label } from '@/components/ui/label';
+import DelAllBtnCart from '../DelAllBtnCart';
+
+
 
 
 export default function CreateOrderForm() {
         const router = useRouter();
+        const [PaymentMethod, setPaymentMethod] = useState<null|string>(null);
     const[cartId,setCartId]  = useState<null|string>(null)
     
     
@@ -25,7 +31,6 @@ export default function CreateOrderForm() {
         }
      );
      const {control,handleSubmit,formState:{errors},reset} = RHFobject;
-
 
 
      async function handlingGetCart(){
@@ -40,38 +45,50 @@ useEffect(function(){
 
     handlingGetCart()
 
-
 },[]);
 
     
 async function SubmitFun(data: cashorderType) {
+    console.log("Method",PaymentMethod)
   if (!cartId) return toast.error("Cart not found");
-
-  const res = await createCashOrder(cartId, data); // pass separately
-
-//   console.log("order res:", res);
-
-  if (res?.status === "success") {
+  if(PaymentMethod==='Cash')
+  {
+    const res = await createCashOrder(cartId, data); 
+      if (res?.status === "success") {
     toast.success("success", { position: "top-right", duration: 3000 });
     reset({ details: "", city: "", phone: "" });
-    // console.log("res.data", res.data);
-// res.data {taxPrice: 0, shippingPrice: 0, totalOrderPrice: 2724, paymentMethodType: 'cash', isPaid: false, …}cartItems: Array(4)0: {count: 10, _id: '68d043ccd60729a936767ac3', product: '6428ead5dc1175abc65ca0ad', price: 149}1: {count: 5, _id: '68d0be70d60729a936790d0f', product: '6428eb43dc1175abc65ca0b3', price: 149}2: {count: 1, _id: '68d0be72d60729a936790d20', product: '6428ebc6dc1175abc65ca0b9', price: 191}3: {count: 2, _id: '68d10f53d60729a93679b5a5', product: '6428e997dc1175abc65ca0a1', price: 149}length: 4[[Prototype]]: Array(0)createdAt: "2025-09-23T09:35:35.296Z"id: 66841isDelivered: falseisPaid: falsepaymentMethodType: "cash"shippingPrice: 0taxPrice: 0totalOrderPrice: 2724updatedAt: "2025-09-23T09:35:35.296Z"user: "68cd247667868197251ce92a"__v: 0_id: "68d269e7cf081ebcc1c7aacb"[[Prototype]]: Object
-
+    router.push('/allorders')
     return res.data;
-  } else {
-    toast.error(res?.message || "Failed to create order", {
-      position: "top-right",
-      duration: 3000,
-    });
+
+}
+    else {
+    toast.error(res?.message || "Failed to create order", {position: "top-right",duration: 3000,});
+    }
   }
+
+  else if (PaymentMethod==='Online')
+  {
+    const res = await createOnlineOrder(cartId, data); 
+        console.log('onlineres',res)
+
+      if (res?.status === "success") { 
+        window.location.href=res.session.url;
+    toast.success("success", { position: "top-right", duration: 3000 });
+    reset({ details: "", city: "", phone: "" });
+    return res.data;}
+    else {
+    toast.error(res?.message || "Failed to create order", {position: "top-right",duration: 3000,});
+    }
+  }
+
+  
+
 }
   return (
     <>
 
         <Form {...RHFobject} >
             <form  onSubmit={handleSubmit(SubmitFun)} >
-
-
 
                 {/* User Address */}
                 <FormField
@@ -96,8 +113,6 @@ async function SubmitFun(data: cashorderType) {
                     </FormItem>
                 )}
                 />
-
-
                 {/* User City */}
                 <FormField
                 control={control}
@@ -121,10 +136,7 @@ async function SubmitFun(data: cashorderType) {
                     </FormItem>
                 )}
                 />
-
-
                 {/* User Phone */}
-
                 <FormField
                 control={control}
                 name="phone"
@@ -148,8 +160,19 @@ async function SubmitFun(data: cashorderType) {
                 )}
                 />
 
+              <RadioGroup onValueChange={(val)=>setPaymentMethod(val)} className='flex justify-between items-center' >
+            <div className="flex items-center space-x-2">
+                <RadioGroupItem value="Cash" id="Cash" />
+                <Label htmlFor="Cash">Cash Payment</Label>
+            </div>
+            <div className="flex items-center space-x-2">
+                <RadioGroupItem value="Online" id="Online" />
+                <Label htmlFor="Online">Online Payment</Label>
+            </div>
+            </RadioGroup>
 
-            <Button type='submit'  className='cursor-pointer'>Place Cash Order</Button>
+
+            <Button type='submit'  className='cursor-pointer mt-3'>Place Cash Order</Button>
 
             </form>
 

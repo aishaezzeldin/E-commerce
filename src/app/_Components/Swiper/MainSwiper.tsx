@@ -1,13 +1,11 @@
 'use client'
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-// import required modules
 import { EffectFade, Navigation, Pagination } from 'swiper/modules';
 import Image from 'next/image';
 
@@ -36,7 +34,7 @@ export default function MainSwiper() {
                         fill
                         className="object-fill"
                         priority
-                        sizes="100vw"   // 👈 always full width of viewport
+                        sizes="100vw"   
                     />
                     </div>
 
@@ -75,26 +73,14 @@ export default function MainSwiper() {
                         fill
                         className="object-fill"
                         priority
-                        sizes="100vw"   // 👈 always full width of viewport
+                        sizes="100vw"   
                     />
                     </div>
 
         </SwiperSlide>
-
-        {/* <SwiperSlide>
-          <div className='relative h-[600px] w-full'>
-          <Image width={200} height={200} className='object-cover' src='/images/slider-image-2.jpeg' alt='sliderimage'  />
-          </div>
-        </SwiperSlide> */}
 
       </Swiper>
     </>
   );
 }
 
-
-
-
-    {/* <div className='relative h-[600px] w-full'>
-          <Image fill sizes='(max-width:768px) 100vw (max-width:1200px) 50vw,25vw' className='object-cover' src='/images/Mainslider3.jpeg' alt='sliderimage'  />
-            </div> */}

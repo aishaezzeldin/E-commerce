@@ -1,18 +1,21 @@
+
 import { CartProduct } from "@/app/_Types/cart";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping} from "@fortawesome/free-solid-svg-icons";
 import DelAllBtn from "./DelAllBtnCart";
 import DelBtnCart from "./DelBtnCart";
-import { getUserCart } from "./cart.actions";
+import { getUserCart, updateUserCart } from "./cart.actions";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { toast } from "sonner";
+import UpdateCount from "./UpdateCount";
 
 export default async function CartPage() {
 
   
   const cartItems = await getUserCart();
-  
+    
   if (!cartItems) {
     console.error("No cart found");
     return;
@@ -35,9 +38,7 @@ export default async function CartPage() {
   return (
     <>
 
-  {/* <div className="flex flex-col lg:flex-row items-center gap-6 h-screen p-4"> */}
   <div className="flex flex-col lg:flex-row items-start gap-6 min-h-screen p-4">
-
 
     {/* main cart */}
     <div className="w-full lg:w-2/3 h-auto  p-6 ">
@@ -73,15 +74,7 @@ export default async function CartPage() {
                 </h2>
                 <p className="text-sm">{item.product.description}</p>
 
-                {/* <p className="text-sm text-gray-600">
-                  quantity: {item.count} × {item.price} EGP
-                </p> */}
-
-                <div className="flex flex-1 items-center">
-                  <Button className="cursor-pointer bg-green-500">+</Button>
-                  <Button className="cursor-pointer bg-green-500">-</Button>
-                </div>
-
+                <UpdateCount id={item.product.id} count={item.count}/>
 
                 <DelBtnCart id={item.product.id}/>
 
@@ -97,7 +90,6 @@ export default async function CartPage() {
       </div>
 
       <hr className="border-t-2 border-gray-400 mt-8" />
-
 
       <div className="flex mt-6 justify-between items-center ">
 
@@ -129,11 +121,8 @@ export default async function CartPage() {
       <div className="flex justify-between text-2xl font-bold">
         <h3>Total</h3>
         <h3>{totalCartPrice + 250} EGP</h3>
-        {/* <h3>{cartItems.totalCartPrice + 250} EGP</h3> */}
       </div>
 
-
-        {/* <Link href={'./payment'}> */}
         <Link href="/cart/payment">
 
           <Button className="block w-full md:w-2/3 mx-auto my-6 cursor-pointer">

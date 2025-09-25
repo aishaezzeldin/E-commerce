@@ -14,18 +14,8 @@ try {
     }
   });
   const finalres = await res.json();
-  console.log("finalres",finalres)
   return finalres
     
-
-  if(finalres.message =='success'){
-    const cookie = await  cookies();
-    cookie.set('UserToken' , finalres.token,{
-        httpOnly:true,
-        maxAge:60*60,
-        sameSite:'strict',
-    });
-  }
 
   } catch (error) {
     console.log("error",error)

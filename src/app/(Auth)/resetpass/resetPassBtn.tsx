@@ -18,7 +18,6 @@ const [newPassword , setnewPassword]=  useState("");
 
  async function handleResetPass(){
   const res = await resetpassApi(email,newPassword);
-  console.log("resetres",res)
 if (res && res.token) {
   toast.success("Password reset successful", {
     position: 'top-right',
@@ -37,10 +36,6 @@ if (res && res.token) {
         toast.error(res.message,{position:'top-right',duration:3000})
 
    }
-
-
-
-
  }
   return (
     <>

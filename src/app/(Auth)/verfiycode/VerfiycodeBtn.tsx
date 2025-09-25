@@ -13,7 +13,6 @@ export default function VerfiypassBtn() {
  async  function  handleverfiycode()
  {
     const res = await verfiycodeApi(resetCode);
-    console.log("virfy res" , res)
 
 
        if(res && res.status==="Success")
@@ -26,7 +25,6 @@ export default function VerfiypassBtn() {
 
    }
 
-    // console.log("resverfiy",res)
 
  }
 

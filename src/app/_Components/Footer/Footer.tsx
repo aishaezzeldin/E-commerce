@@ -40,9 +40,7 @@ export default function Footer() {
           <li className="mb-4">
             <a href="#" className="hover:underline">Your Addresses</a>
           </li>
-          {/* <li className="mb-4">
-            <a href="#" className="hover:underline">Contact Us</a>
-          </li> */}
+ 
         </ul>
       </div>
 
@@ -78,14 +76,6 @@ export default function Footer() {
           </li>
         </ul>
       </div>
-
-      {/* <div>
-        <Link href={'/'} className='text-4xl'>Fresh Cart</Link>
-         
-        <FontAwesomeIcon icon={faShoppingCart} className='w-10 h-10 text-green-500 ps-2'/>
-
-      </div> */}
-
 
     </div>
 

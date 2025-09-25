@@ -8,10 +8,6 @@ import React from 'react'
 import { toast } from 'sonner'
 
 
-type DelBtnProps = {
-  cartId: string;
-};
-
 export default function DelBtnCart({id}:{id:string}) {
    const router =  useRouter();
 
@@ -27,7 +23,6 @@ export default function DelBtnCart({id}:{id:string}) {
    else{
         toast.error(' Failed   ',{position:'top-right',duration:3000})
    }
-   console.log('res',res);
    }
     
     return (

@@ -30,7 +30,6 @@ export default async function AddressPage() {
               <p><strong>Details:</strong> {addr.details}</p>
               <p><strong>Phone:</strong> {addr.phone}</p>
 
-              {/* Link to GetSpecificAddress/[id] */}
               <Link
                 href={`./GetSpacificAddress/${addr._id}`}
                 className="text-blue-600 underline text-sm"
@@ -50,9 +49,6 @@ export default async function AddressPage() {
         </p>
       )}
 
-      {/* <div className="max-w-sm mx-auto my-7">
-        <AddressForm />
-      </div> */}
     </div>
   );
 }

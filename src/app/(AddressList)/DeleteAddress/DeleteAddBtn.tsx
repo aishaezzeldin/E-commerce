@@ -8,9 +8,6 @@ import { toast } from 'sonner'
 import { DeleteAddress } from './DeleteAddress.actions'
 
 
-// type DelBtnProps = {
-//   cartId: string;
-// };
 
 export default function DelBtnAddress({id}:{id:string}) {
    const router =  useRouter();
@@ -26,7 +23,6 @@ export default function DelBtnAddress({id}:{id:string}) {
    else{
         toast.error(' Failed   ',{position:'top-right',duration:3000})
    }
-   console.log('res',res);
    }
     
     return (

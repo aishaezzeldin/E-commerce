@@ -30,7 +30,6 @@ async function SubmitFun(data:addressType){
 
     const res = await AddAddress({data});
 
-    console.log("address res" ,res)
 
 
         if(res && res.status==="success")
@@ -42,8 +41,9 @@ async function SubmitFun(data:addressType){
                 city:"",
                 phone: "",
             });
+            router.push('/GetAllAddresses')
 
-            console.log("res.data" ,res.data)            
+
             return res.data;
 
    }
@@ -75,7 +75,6 @@ async function SubmitFun(data:addressType){
                 className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 ps-3 pe-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                 placeholder="Vila/Appartment/Office"
             />
-            {/* <FontAwesomeIcon icon={faUser} className="absolute inset-y-0 right-0 my-auto me-3 h-4 w-4 text-black" /> */}
                         </div>
                     </FormControl>
                     <FormMessage />
@@ -99,7 +98,6 @@ async function SubmitFun(data:addressType){
                 className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 ps-3 pe-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                 placeholder="Enter Address Details "
             />
-            {/* <FontAwesomeIcon icon={faUser} className="absolute inset-y-0 right-0 my-auto me-3 h-4 w-4 text-black" /> */}
                         </div>
                     </FormControl>
                     <FormMessage />
@@ -159,7 +157,8 @@ async function SubmitFun(data:addressType){
                 />
 
 
-            <Button type='submit'  className='cursor-pointer'>Continue</Button>
+            <Button type='submit'  className='cursor-pointer'>Save</Button>
+
 
             </form>
 

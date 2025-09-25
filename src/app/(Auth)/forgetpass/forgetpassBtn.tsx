@@ -2,7 +2,6 @@
 import { Button } from '@/components/ui/button'
 import React, { useState } from 'react'
 import { forgetpasswordApi } from './forgetpass.actions'
-import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
 
@@ -13,9 +12,7 @@ export default function ForgetPassBtn() {
   const [email, setEmail] = useState("")
 
    async function handleforgetpass(){
-    //  if (!email) return alert("No email found in session!");
     const res = await  forgetpasswordApi(email);
-    console.log("Forget res" , res)
 
         
 
@@ -28,15 +25,10 @@ export default function ForgetPassBtn() {
     
    }
    else{
-        // toast.error(' Reset code is invalid or has expired  ',{position:'top-right',duration:3000})
+        toast.error(' Reset code is invalid or has expired  ',{position:'top-right',duration:3000})
 
    }
 
-
-
-
-    // console.log("PassRes",res)
-    //  alert(res.message || "If this email exists, we sent a reset link.")
     }
   return (
     <>

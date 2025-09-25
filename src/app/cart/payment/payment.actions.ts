@@ -10,8 +10,10 @@ import { revalidatePath } from "next/cache";
 // export async function createCashOrder({cartId,shippingAddress,}: {cartId: string;shippingAddress: cashorderType;}){
 
 export async function createCashOrder(cartId: string,shippingAddress : cashorderType) {
-  const Mytoken = await GetUserToken();
-  if (!Mytoken) {
+  // const Mytoken = await GetUserToken();
+  const {credentialToken} =  await  GetUserToken();
+
+  if (!credentialToken) {
     console.error("No user token found");
     return null;
   }
@@ -21,7 +23,7 @@ export async function createCashOrder(cartId: string,shippingAddress : cashorder
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        token: Mytoken,
+        token: credentialToken,
       },
       body: JSON.stringify(shippingAddress),
     });
@@ -37,6 +39,47 @@ export async function createCashOrder(cartId: string,shippingAddress : cashorder
 
     const data = await res.json();
     console.log("res.data", data);
+
+
+    if(data.status==='success'){
+    revalidatePath('/cart');
+    }
+
+    return data;
+  } catch (err) {
+    console.error("Error creating order:", err);
+    return null;
+  }
+}
+export async function createOnlineOrder(cartId: string,shippingAddress : cashorderType) {
+  // const Mytoken = await GetUserToken();
+  const {credentialToken} =  await  GetUserToken();
+
+  if (!credentialToken) {
+    console.error("No user token found");
+    return null;
+  }
+
+  try {
+    const res = await fetch(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=http://localhost:3000`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        token: credentialToken,
+      },
+      body: JSON.stringify(shippingAddress),
+    });
+
+    
+
+    if (!res.ok) {
+      console.error("Failed to create order:");
+      return null;
+    }
+    
+
+    const data = await res.json();
+    console.log("res.online", data);
 
 
     if(data.status==='success'){

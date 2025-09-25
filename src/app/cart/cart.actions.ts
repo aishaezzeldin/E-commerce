@@ -5,19 +5,19 @@ import { AddToCartResponse} from "../_Types/cart";
 
 
 export async function DelAllProducts(){
-    const Mytoken =  await  GetUserToken();
+const {credentialToken} =  await  GetUserToken();
+
 
   try {
     const res = await fetch('https://ecommerce.routemisr.com/api/v1/cart',
       {
         method:'DELETE',
         headers:{
-          token:Mytoken as string
+          token:credentialToken as string
         }
       }
     ) 
     const finalres = await res.json();
-    // console.log("finalresofdelete ",finalres)
 
     return finalres
     
@@ -32,8 +32,9 @@ export async function DelAllProducts(){
 
 
 export async function AddProducttocart(productId: string) {
-  const Mytoken = await GetUserToken();
-  if (!Mytoken) {
+const {credentialToken} =  await  GetUserToken();
+
+  if (!credentialToken) {
     console.error("No user token found");
     return null;
   }
@@ -44,17 +45,12 @@ export async function AddProducttocart(productId: string) {
       body: JSON.stringify({ productId }),
       headers: {
         "Content-Type": "application/json",
-        token: Mytoken as string,
+        token: credentialToken as string,
       },
     });
 
     const finalres = await res.json();
 
-    // if (finalres.status === "success") {
-    //   return finalres; // return full cart response
-    // }
-
-    // console.log("finalres", finalres);
     
     return finalres;
   } catch (error) {
@@ -65,22 +61,18 @@ export async function AddProducttocart(productId: string) {
 
 
 export async function DelProductFromcart (id:string){
-const Mytoken =  await  GetUserToken();
+const {credentialToken} =  await  GetUserToken();
 
 
   try {
       const res = await fetch(`https://ecommerce.routemisr.com/api/v1/cart/${id}`,{
     method:'Delete',
     headers:{
-      token:Mytoken as string,
+      token:credentialToken as string ,
     }
   })
 
   const finalres = await res.json();
-  // if (finalres.status === "success") {
-  //   revalidatePath("/cart");   // 🔄 ensures cache is updated
-  //   // revalidatePath("/");       // 🔄 if navbar is rendered at root
-  // }
   return finalres
     
   } catch (error) {
@@ -88,22 +80,18 @@ const Mytoken =  await  GetUserToken();
     
   }
 
-
-
-  
-  // console.log("finalres",finalres)
-
 }
 
 
 export async function getUserCart():Promise<AddToCartResponse | null>{
-    const Mytoken =  await  GetUserToken();
+const {credentialToken} =  await  GetUserToken();
+
 
       try {
   const res = await fetch(`https://ecommerce.routemisr.com/api/v1/cart`,{
 
     headers:{
-         token : Mytoken as string,
+         token : credentialToken as string,
     },
     
     
@@ -111,12 +99,10 @@ export async function getUserCart():Promise<AddToCartResponse | null>{
   const finalres = await res.json();
 
  
-//  console.log("finalres",finalres);
  if(!finalres.data)
  {
   return null;
  }
-//  return finalres.data as CartResponse ;
  return finalres ;
 
   }
@@ -126,6 +112,33 @@ export async function getUserCart():Promise<AddToCartResponse | null>{
   }
   }
 
+export async function updateUserCart (count:number ,productId: string )
+{
+const {credentialToken} =  await  GetUserToken();
+
+    try {
+            const res = await fetch(`https://ecommerce.routemisr.com/api/v1/cart/${productId}`,
+        {
+            method:'put',
+            body:JSON.stringify({count}),
+
+            headers:{
+              token:credentialToken as string,
+                'Content-Type':'application/json',
+            }
+
+        }
+    )
+    const finalres = await res.json();
+    return finalres
+
+    } 
+    catch (error) {
+        console.log("error",error)
+        
+    }
+
+}
 
 
 
